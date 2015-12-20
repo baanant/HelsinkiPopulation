@@ -11,6 +11,10 @@ using HelsinkiPopulation.ViewModels;
 
 namespace HelsinkiPopulation.Controllers
 {
+    /// <summary>
+    /// NOTICE! Due to description of the assignment I decided to create additional API methods to handle the dev.helsinki.fi API calls.
+    /// In real life application I would have probably handled the api data directly in AngularJS.
+    /// </summary>
     [Route("api/population")]
     public class PopulationController : Controller
     {
