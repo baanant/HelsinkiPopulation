@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3459EB8A-A245-49E9-9EF1-4FECCA07E455}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{49F25A4D-2D41-4301-BB11-42F9AED93439}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HelsinkiPopulation", "src\HelsinkiPopulation\HelsinkiPopulation.xproj", "{79AEB43A-0B0E-4EC2-8C90-288A644B7E27}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79AEB43A-0B0E-4EC2-8C90-288A644B7E27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79AEB43A-0B0E-4EC2-8C90-288A644B7E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79AEB43A-0B0E-4EC2-8C90-288A644B7E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79AEB43A-0B0E-4EC2-8C90-288A644B7E27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{79AEB43A-0B0E-4EC2-8C90-288A644B7E27} = {3459EB8A-A245-49E9-9EF1-4FECCA07E455}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Helsingin Väestö";
+}
+
+@section Scripts {
+
+    <environment names="Development">
+        <script src="~/lib/angular/angular.js"></script>
+        <script src="~/lib/angular-route/angular-route.js"></script>
+        <script src="~/js/app.js"></script>
+        <script src="~/js/populationController.js"></script>
+    </environment>
+
+    <environment names="Production,Staging">
+        <script src="~/lib/angular/angular.min.js"></script>
+        <script src="~/lib/angular-route/angular-route.min.js"></script>
+        <script src="~/js/app.min.js"></script>
+        <script src="~/js/populationController.min.js"></script>
+    </environment>
+
+    <script src='~/lib/angular-loading-bar/build/loading-bar.js'></script>
+    <script src="~/lib/Chart.js/Chart.js"></script>
+    <script src="~/lib/angular-chart.js/dist/angular-chart.js"></script>
+    
+
+}
+<div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+        <h2>Helsingin Väestö</h2>
+    </div>
+</div>
+<div class="row top-buffer" ng-app="app">
+    <div ng-view></div>
+
+</div>
