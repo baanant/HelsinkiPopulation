@@ -1,4 +1,7 @@
-Published to:  [Azure](helsinkipopulation.azurewebsites.net/)
+Published to:  [Azure](helsinkipopulation.azurewebsites.net/).
+
+
+
 Known issues:
 * Hovering the chart causes weird behavior.
 * Gulp minimization does not work, so for now the app utilizes normal .js and .css files.
