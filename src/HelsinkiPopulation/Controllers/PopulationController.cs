@@ -8,6 +8,7 @@ using Microsoft.AspNet.Mvc;
 using Newtonsoft.Json.Linq;
 using HelsinkiPopulation.Utilities;
 using HelsinkiPopulation.ViewModels;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace HelsinkiPopulation.Controllers
 {
@@ -18,26 +19,39 @@ namespace HelsinkiPopulation.Controllers
     [Route("api/population")]
     public class PopulationController : Controller
     {
+        private IMemoryCache memCache;
+
+        public PopulationController(IMemoryCache cache)
+        {
+           memCache = cache;
+        }
 
         /// <summary>
-        /// Fetches the population data to be shown as a diagram.
+        /// Fetches the population data to be shown as a diagram. Uses In Memory Caching to store the year.
         /// NOTICE! Exception handling is still missing.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("")]
-        public async Task<JsonResult> ShowPopulation(int? id)
+        public async Task<JsonResult> ShowPopulation(int? id = null)
         {
-            //TODO! Add here the condition where the id is null. In that case check if there is a value in the cache. 
+            if (id == null)
+            {
+                memCache.TryGetValue("selectedYear", out id);
+            }
             if (id != null)
             {
+                memCache.Set("selectedYear", id, new MemoryCacheEntryOptions()
+                    .SetSlidingExpiration(TimeSpan.FromMinutes(45))
+                    .SetAbsoluteExpiration(TimeSpan.FromHours(1)));
                 var data = await GetData((int)id);
-                return Json(data);
+                var returnVal = new PopulationData() {Data = data, Year = (int) id};
+                return Json(returnVal);
             }
             return null;
         }
 
-
+  
         /// <summary>
         /// Fetches the year data to be shown in the client dropdown menu.
         /// NOTICE! Exception handling is still missing!

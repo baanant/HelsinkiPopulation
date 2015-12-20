@@ -10,6 +10,7 @@ namespace HelsinkiPopulation.Utilities
     {
         /// <summary>
         /// Parses the population data. 
+        /// Not the greatest solution, I know. :)
         /// </summary>
         /// <param name="json"></param>
         /// <returns></returns>
@@ -28,6 +29,7 @@ namespace HelsinkiPopulation.Utilities
 
         /// <summary>
         /// Parses the year data.
+        /// Not the greatest solution, I know. :)
         /// </summary>
         /// <param name="json"></param>
         /// <returns></returns>

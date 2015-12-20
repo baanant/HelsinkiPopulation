@@ -1,4 +1,4 @@
-﻿<div class="col-md-2" ng-show="vm.errormessage == null">
+﻿<div class="col-md-2"  ng-show="vm.errormessage == null">
     <p>Vuoden valinta:</p>
     <select ng-model="yearData" ng-change="vm.UpdateData(yearData)"
             data-ng-options="year as year.Year for year in vm.years">
@@ -6,9 +6,15 @@
     </select>
 </div>
 <div class="col-md-10">
-    <div ng-show="vm.errormessage != null" class="alert alert-danger">{{vm.errormessage}}</div>
-    <canvas id="bar" class="chart chart-bar" ng-show="yearData != null && vm.errormessage == null" chart-options="vm.options" chart-data="vm.data" chart-labels="vm.labels"></canvas>
-    <div ng-show="yearData == null && vm.errormessage == null">
-        <p>Hei! Aloita valitsemalla vuosi, niin näet pylväsdiagrammin Helsingin väestötilanteesta kyseisenä vuonna.</p>
+    <div ng-show="vm.data != null" class="row col-md-2 col-md-offset-5">
+       Vuosi  {{vm.year}}
     </div>
+    <div class="row">
+        <div ng-show="vm.errormessage != null" class="alert alert-danger">{{vm.errormessage}}</div>
+        <canvas ng-show="vm.errormessage == null && vm.data != null" id="bar" class="chart chart-bar" chart-options="vm.options" chart-data="vm.data" chart-labels="vm.labels"></canvas>
+        <div ng-show="vm.data == null && vm.errormessage == null">
+            <p>Hei! Aloita valitsemalla vuosi, niin näet pylväsdiagrammin Helsingin väestötilanteesta kyseisenä vuonna.</p>
+        </div>
+    </div>
+  
 </div>

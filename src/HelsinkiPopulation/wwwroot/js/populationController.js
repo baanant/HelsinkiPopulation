@@ -6,7 +6,9 @@
     // Getting the existing module
     angular.module("app")
       .controller("populationController", populationController);
+    
 
+    //TODO! Fix rendering problems.
     function populationController($http) {
 
         var vm = this;
@@ -16,17 +18,26 @@
         vm.errorMessage = "";
         vm.options = {};
         //Call this on the first page load. API then checks if cached year exists and retrieves the data accordingly.
-        //Notice! The return value should also contain the cached year so that the year dropdown could be refreshed.
-        $http({
-            url: '/api/population/',
-            method: 'GET'
-        }
-        ).success(function (data) {
+        //Notice! The dropdown item should be also refreshed.
+        vm.Initialize = function()
+        {
             vm.errorMessage = "";
-            vm.chartlabels = Object.keys(data);
-            vm.chartseries = Object.values(data);
-        });
+            $http({
+                url: '/api/population/',
+                method: 'GET',
+                params:null
+            }
+            ).success(function (data) {
+                vm.labels = Object.keys(data.Data);
+                vm.data = [Object.keys(data.Data).map(function (key) {
+                    return data.Data[key];
+                })];
 
+                vm.year = data.Year;
+            });
+        }
+
+        vm.Initialize();
         //Gets the parsed year data from the API which fetches the data from dev.helsinki.fi.
         $http({
             url: '/api/population/years',
@@ -59,11 +70,11 @@
                 params: year
             }
             ).success(function (data) {
-                vm.labels = Object.keys(data);
-                vm.data = [Object.keys(data).map(function (key) {
-                    return data[key];
+                vm.labels = Object.keys(data.Data);
+                vm.data = [Object.keys(data.Data).map(function (key) {
+                    return data.Data[key];
                 })];
-
+                vm.year = data.Year;
 
             });
         }
